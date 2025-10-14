@@ -33,3 +33,13 @@ def test_binary_tree_height():
 	#   4   5
 	# Height (edges): 2
 	assert tree.get_height() == 2
+
+def test_binary_tree_is_balance_true():
+	tree = BinaryTree()
+	tree.root = TreeNode(1)
+	tree.root.left = TreeNode(2)
+	tree.root.right = TreeNode(3)
+	tree.root.left.left = TreeNode(4)
+	tree.root.left.right = TreeNode(5)
+
+	assert tree.is_balanced() is true
