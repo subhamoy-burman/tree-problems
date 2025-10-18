@@ -27,4 +27,31 @@ class BinaryTree:
              return -1
           return 1 + max(rightBalance,leftBalance)
        return check(self.root)!= -1
+    
+    def get_height(self):
+       def _height(node):
+           if node is None:
+            return -1 
+           left_height = _height(node.left)
+           right_height = _height(node.right)
+           return 1 + max(left_height, right_height)
+       return _height(self.root)
+
+    def diameter(self):
+       max_diam = 0
+
+       def _heightAndDiameter(node):
+           nonlocal max_diam
+           if node is None:
+            return -1 
+           left_height = _heightAndDiameter(node.left)
+           right_height = _heightAndDiameter(node.right)
+           max_diam = max(max_diam, left_height + right_height + 2)
+           return 1 + max(left_height, right_height)
+       return max_diam
+
+
+       
+
+
        
