@@ -50,26 +50,27 @@ class BinaryTree:
            return 1 + max(left_height, right_height)
        return max_diam
 
-
     def maxPathSum(self):
-        maxSumOfPath = float('-inf')   
-    
+        maxSumOfPath = float('-inf')
+
         def recursionMaxPathSum(node):
-           nonlocal maxSumOfPath
-           if node is None:
-            return 0
-           
-           leftMaxPathSum = recursionMaxPathSum(node.left)
-           rightMaxPathSum = recursionMaxPathSum(node.right)
+            nonlocal maxSumOfPath
 
-           sumOfPath = node.value + max(leftMaxPathSum,0) + max(rightMaxPathSum,0)
-           maxSumOfPath = max(sumOfPath, maxSumOfPath)
+            if node is None:
+                return 0
+            
+            leftMaxPathSum = recursionMaxPathSum(node.left)
+            rightMaxPathSum = recursionMaxPathSum(node.right)
 
-           return node.value + max(0, leftMaxPathSum, rightMaxPathSum)
-        
+            sumOfPath = node.value + max(leftMaxPathSum,0) + max(rightMaxPathSum,0)
+            maxSumOfPath = max(sumOfPath, maxSumOfPath)
 
+            return node.value + max(0, leftMaxPathSum, rightMaxPathSum)
+            
         recursionMaxPathSum(self.root)
         return maxSumOfPath
+       
+   
 
 
 
